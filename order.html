@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order - Sunday Toffee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Libre+Baskerville:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --warm-brown: #8B7355;
+            --soft-cream: #FAF7F2;
+            --toast: #D4A574;
+            --dark-text: #4A4A4A;
+            --light-text: #7A7A7A;
+            --butter: #F5E6D3;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-text);
+            background-color: var(--soft-cream);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* Nav */
+        nav {
+            padding: 2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.3rem;
+            color: var(--warm-brown);
+            text-decoration: none;
+            font-weight: 400;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--light-text);
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--warm-brown);
+        }
+
+        /* Page layout */
+        .order-page {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 2rem 8% 6rem;
+        }
+
+        /* Hero */
+        .order-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .order-hero h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--warm-brown);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        .order-hero p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        .allergy-notice {
+            display: inline-block;
+            background: var(--butter);
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--warm-brown);
+            margin-top: 1rem;
+        }
+
+        /* Section headings */
+        .form-section {
+            margin-bottom: 2.5rem;
+        }
+        .form-section h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--warm-brown);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #E8E4DF;
+        }
+
+        /* Product cards */
+        .product-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .product-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #E8E4DF;
+            transition: border-color 0.2s ease;
+        }
+        .product-card:hover {
+            border-color: var(--toast);
+        }
+        .product-info h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--dark-text);
+            margin-bottom: 0.2rem;
+        }
+        .product-info .price {
+            color: var(--warm-brown);
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+        .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .qty-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #E8E4DF;
+            background: var(--soft-cream);
+            color: var(--warm-brown);
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            line-height: 1;
+        }
+        .qty-btn:hover {
+            background: var(--butter);
+            border-color: var(--toast);
+        }
+        .qty-value {
+            font-size: 1rem;
+            font-weight: 400;
+            min-width: 20px;
+            text-align: center;
+            color: var(--dark-text);
+        }
+
+        /* Running total */
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.2rem;
+            padding: 1rem 1.5rem;
+            background: var(--butter);
+            border-radius: 8px;
+        }
+        .order-total span:first-child {
+            font-size: 0.95rem;
+            color: var(--dark-text);
+        }
+        .order-total .total-amount {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.2rem;
+            color: var(--warm-brown);
+        }
+
+        /* Form fields */
+        .form-row {
+            margin-bottom: 1rem;
+        }
+        .form-row label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--dark-text);
+            margin-bottom: 0.3rem;
+            font-weight: 400;
+        }
+        .form-row input[type="text"],
+        .form-row input[type="email"],
+        .form-row input[type="tel"],
+        .form-row textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #E8E4DF;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--dark-text);
+            background: white;
+            transition: border-color 0.2s ease;
+        }
+        .form-row input:focus,
+        .form-row textarea:focus {
+            outline: none;
+            border-color: var(--toast);
+        }
+        .form-row textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* Pickup info */
+        .pickup-info {
+            background: white;
+            border: 1px solid #E8E4DF;
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+        .pickup-info .schedule {
+            font-size: 0.9rem;
+            color: var(--warm-brown);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        .pickup-info .address {
+            font-size: 0.85rem;
+            color: var(--light-text);
+            margin-bottom: 0.3rem;
+        }
+        .pickup-info .address-note {
+            font-size: 0.8rem;
+            color: var(--light-text);
+            font-style: italic;
+        }
+        .delivery-note {
+            font-size: 0.8rem;
+            color: var(--warm-brown);
+            background: var(--butter);
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+
+        /* Radio options */
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+        .radio-option input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #E8E4DF;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+        .radio-option input[type="radio"]:checked {
+            border-color: var(--warm-brown);
+            background: var(--warm-brown);
+            box-shadow: inset 0 0 0 3px var(--soft-cream);
+        }
+        .radio-option span {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+        .radio-option .radio-hint {
+            font-size: 0.8rem;
+            color: var(--light-text);
+            margin-left: 0.3rem;
+        }
+
+        /* Payment details (Venmo/Zelle info) */
+        .payment-detail {
+            display: none;
+            background: var(--butter);
+            padding: 0.8rem 1.2rem;
+            border-radius: 6px;
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+            color: var(--warm-brown);
+        }
+        .payment-detail.visible {
+            display: block;
+        }
+        .payment-detail strong {
+            font-weight: 500;
+        }
+
+        /* Summary card */
+        .summary-card {
+            background: white;
+            border: 1px solid #E8E4DF;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            font-size: 0.9rem;
+        }
+        .summary-row .label {
+            color: var(--light-text);
+        }
+        .summary-row .value {
+            color: var(--dark-text);
+            text-align: right;
+        }
+        .summary-divider {
+            border: none;
+            border-top: 1px solid #E8E4DF;
+            margin: 0.8rem 0;
+        }
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0 0;
+            font-size: 1rem;
+        }
+        .summary-total .label {
+            color: var(--dark-text);
+            font-weight: 400;
+        }
+        .summary-total .value {
+            font-family: 'Libre Baskerville', serif;
+            color: var(--warm-brown);
+            font-size: 1.1rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            transition: all 0.2s ease;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background-color: var(--warm-brown);
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #7A6548;
+        }
+        .btn-primary:disabled {
+            background-color: #C4B9A8;
+            cursor: not-allowed;
+        }
+        .submit-area {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+        }
+        .submit-error {
+            color: #C4847A;
+            font-size: 0.85rem;
+            margin-top: 0.8rem;
+            display: none;
+        }
+
+        /* Confirmation */
+        .confirmation {
+            display: none;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        .confirmation h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--warm-brown);
+            margin-bottom: 1rem;
+        }
+        .confirmation p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            max-width: 420px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .confirmation .next-steps {
+            background: white;
+            border: 1px solid #E8E4DF;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: left;
+            max-width: 420px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .confirmation .next-steps h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--warm-brown);
+            margin-bottom: 0.8rem;
+        }
+        .confirmation .next-steps li {
+            color: var(--light-text);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            margin-left: 1.2rem;
+        }
+        .confirmation .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--warm-brown);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: opacity 0.2s ease;
+        }
+        .confirmation .back-link:hover {
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 8%;
+            color: var(--light-text);
+            font-size: 0.85rem;
+        }
+        footer .logo {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--warm-brown);
+            text-decoration: none;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            transition: opacity 0.2s ease;
+        }
+        .instagram-link:hover {
+            opacity: 0.7;
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .order-hero h1 { font-size: 1.8rem; }
+            .nav-links { gap: 1.2rem; }
+            .nav-links a { font-size: 0.8rem; }
+            .order-page { padding: 1.5rem 5% 4rem; }
+            .product-card { padding: 1rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">sunday toffee</a>
+        <ul class="nav-links">
+            <li><a href="index.html#products">what i make</a></li>
+            <li><a href="index.html#about">about</a></li>
+            <li><a href="#" class="active">order</a></li>
+        </ul>
+    </nav>
+
+    <div class="order-page">
+
+        <!-- ORDER FORM -->
+        <div id="order-form">
+
+            <!-- Hero -->
+            <div class="order-hero fade-in">
+                <h1>place your order</h1>
+                <p>Buttery, crunchy toffee filled with almonds, covered in rich chocolate, and topped with more toasted nuts. Made in small batches with love right here in SF.</p>
+                <div class="allergy-notice">Contains nuts and dairy. Made in a home kitchen.</div>
+            </div>
+
+            <!-- Product Selection -->
+            <div class="form-section fade-in">
+                <h2>choose your toffee</h2>
+                <div class="product-cards">
+                    <div class="product-card">
+                        <div class="product-info">
+                            <h3>8 oz box</h3>
+                            <span class="price">$10</span>
+                        </div>
+                        <div class="qty-control">
+                            <button class="qty-btn" onclick="updateQty('8oz', -1)" aria-label="Decrease 8oz quantity">−</button>
+                            <span class="qty-value" id="qty-8oz">0</span>
+                            <button class="qty-btn" onclick="updateQty('8oz', 1)" aria-label="Increase 8oz quantity">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-info">
+                            <h3>4 oz box</h3>
+                            <span class="price">$5</span>
+                        </div>
+                        <div class="qty-control">
+                            <button class="qty-btn" onclick="updateQty('4oz', -1)" aria-label="Decrease 4oz quantity">−</button>
+                            <span class="qty-value" id="qty-4oz">0</span>
+                            <button class="qty-btn" onclick="updateQty('4oz', 1)" aria-label="Increase 4oz quantity">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-total">
+                    <span>order total</span>
+                    <span class="total-amount" id="running-total">$0</span>
+                </div>
+            </div>
+
+            <!-- Your Info -->
+            <div class="form-section fade-in">
+                <h2>your info</h2>
+                <div class="form-row">
+                    <label for="name">name</label>
+                    <input type="text" id="name" placeholder="Your name" required>
+                </div>
+                <div class="form-row">
+                    <label for="email">email</label>
+                    <input type="email" id="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-row">
+                    <label for="phone">phone</label>
+                    <input type="tel" id="phone" placeholder="(555) 123-4567" required>
+                </div>
+            </div>
+
+            <!-- Pickup Details -->
+            <div class="form-section fade-in">
+                <h2>pickup details</h2>
+                <div class="pickup-info">
+                    <div class="schedule">Order by Friday for Sunday pickup</div>
+                    <div class="address">3639 Market St, San Francisco, CA 94131</div>
+                    <div class="address-note">Ring the first door bell when you get here!</div>
+                </div>
+                <label style="font-size: 0.85rem; color: var(--dark-text); margin-bottom: 0.5rem; display: block; font-weight: 400;">pickup window</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="pickup" value="9AM - 12PM">
+                        <span>9AM - 12PM</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="pickup" value="3PM - 6PM">
+                        <span>3PM - 6PM</span>
+                    </label>
+                </div>
+                <div class="delivery-note">Orders of $100+ get free delivery in SF & Daly City</div>
+            </div>
+
+            <!-- Payment -->
+            <div class="form-section fade-in">
+                <h2>payment</h2>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="payment" value="Venmo" onchange="showPaymentDetail()">
+                        <span>Venmo</span>
+                        <span class="radio-hint">(preferred)</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="payment" value="Cash" onchange="showPaymentDetail()">
+                        <span>Cash at pickup</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="payment" value="Zelle" onchange="showPaymentDetail()">
+                        <span>Zelle</span>
+                    </label>
+                </div>
+                <div class="payment-detail" id="venmo-detail">
+                    <strong>Venmo:</strong> @oats123 (last four: 7476)
+                </div>
+                <div class="payment-detail" id="zelle-detail">
+                    Zelle is also accepted — details provided at pickup or via email.
+                </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="form-section fade-in">
+                <h2>anything else?</h2>
+                <div class="form-row">
+                    <textarea id="notes" placeholder="Special requests, questions, etc. (optional)"></textarea>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="form-section fade-in">
+                <h2>order summary</h2>
+                <div class="summary-card">
+                    <div class="summary-row" id="summary-8oz" style="display: none;">
+                        <span class="label">8 oz box</span>
+                        <span class="value" id="summary-8oz-value"></span>
+                    </div>
+                    <div class="summary-row" id="summary-4oz" style="display: none;">
+                        <span class="label">4 oz box</span>
+                        <span class="value" id="summary-4oz-value"></span>
+                    </div>
+                    <div class="summary-row" id="summary-empty">
+                        <span class="label">No items selected yet</span>
+                        <span class="value"></span>
+                    </div>
+                    <hr class="summary-divider">
+                    <div class="summary-row" id="summary-pickup" style="display: none;">
+                        <span class="label">Pickup</span>
+                        <span class="value" id="summary-pickup-value"></span>
+                    </div>
+                    <div class="summary-row" id="summary-payment" style="display: none;">
+                        <span class="label">Payment</span>
+                        <span class="value" id="summary-payment-value"></span>
+                    </div>
+                    <hr class="summary-divider" id="summary-divider-2" style="display: none;">
+                    <div class="summary-total">
+                        <span class="label">Total</span>
+                        <span class="value" id="summary-total">$0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="submit-area fade-in">
+                <button class="btn btn-primary submit-btn" id="submit-btn" onclick="submitOrder()">
+                    place order
+                </button>
+                <p class="submit-error" id="submit-error"></p>
+            </div>
+
+        </div>
+
+        <!-- CONFIRMATION -->
+        <div class="confirmation" id="confirmation">
+            <h1>thank you!</h1>
+            <p>Your order has been placed. You'll hear from me soon to confirm the details.</p>
+            <p>Keep an eye on your email for a confirmation.</p>
+            <div class="next-steps">
+                <h3>what's next</h3>
+                <ul>
+                    <li>I'll confirm your order by email</li>
+                    <li id="confirm-payment-step">Send payment via Venmo to @oats123</li>
+                    <li id="confirm-pickup-step">Pick up on Sunday</li>
+                </ul>
+            </div>
+            <a href="index.html" class="back-link">&larr; back to sunday toffee</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <a href="index.html" class="logo">sunday toffee</a>
+        <p>made with love, one batch at a time</p>
+        <a href="https://instagram.com/sunday_toffee" class="instagram-link">
+            @sunday_toffee
+        </a>
+    </footer>
+
+    <script>
+        // ============================================================
+        // CONFIG: Paste your Google Apps Script Web App URL below
+        // ============================================================
+        const APPS_SCRIPT_URL = '';
+
+        // State
+        let qty8oz = 0;
+        let qty4oz = 0;
+
+        // Fade-in animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Quantity controls
+        function updateQty(size, delta) {
+            if (size === '8oz') {
+                qty8oz = Math.max(0, qty8oz + delta);
+                document.getElementById('qty-8oz').textContent = qty8oz;
+            } else {
+                qty4oz = Math.max(0, qty4oz + delta);
+                document.getElementById('qty-4oz').textContent = qty4oz;
+            }
+            updateTotal();
+            updateSummary();
+        }
+
+        function getTotal() {
+            return (qty8oz * 10) + (qty4oz * 5);
+        }
+
+        function updateTotal() {
+            const total = getTotal();
+            document.getElementById('running-total').textContent = '$' + total;
+            document.getElementById('summary-total').textContent = '$' + total;
+        }
+
+        // Payment detail display
+        function showPaymentDetail() {
+            const selected = document.querySelector('input[name="payment"]:checked');
+            document.getElementById('venmo-detail').classList.remove('visible');
+            document.getElementById('zelle-detail').classList.remove('visible');
+
+            if (selected) {
+                if (selected.value === 'Venmo') {
+                    document.getElementById('venmo-detail').classList.add('visible');
+                } else if (selected.value === 'Zelle') {
+                    document.getElementById('zelle-detail').classList.add('visible');
+                }
+            }
+            updateSummary();
+        }
+
+        // Update live summary
+        function updateSummary() {
+            const s8 = document.getElementById('summary-8oz');
+            const s4 = document.getElementById('summary-4oz');
+            const sEmpty = document.getElementById('summary-empty');
+
+            if (qty8oz > 0) {
+                s8.style.display = 'flex';
+                document.getElementById('summary-8oz-value').textContent = qty8oz + ' x $10 = $' + (qty8oz * 10);
+            } else {
+                s8.style.display = 'none';
+            }
+
+            if (qty4oz > 0) {
+                s4.style.display = 'flex';
+                document.getElementById('summary-4oz-value').textContent = qty4oz + ' x $5 = $' + (qty4oz * 5);
+            } else {
+                s4.style.display = 'none';
+            }
+
+            sEmpty.style.display = (qty8oz === 0 && qty4oz === 0) ? 'flex' : 'none';
+
+            // Pickup
+            const pickup = document.querySelector('input[name="pickup"]:checked');
+            const sPickup = document.getElementById('summary-pickup');
+            if (pickup) {
+                sPickup.style.display = 'flex';
+                document.getElementById('summary-pickup-value').textContent = 'Sunday, ' + pickup.value;
+            } else {
+                sPickup.style.display = 'none';
+            }
+
+            // Payment
+            const payment = document.querySelector('input[name="payment"]:checked');
+            const sPayment = document.getElementById('summary-payment');
+            const sDivider2 = document.getElementById('summary-divider-2');
+            if (payment) {
+                sPayment.style.display = 'flex';
+                document.getElementById('summary-payment-value').textContent = payment.value;
+                sDivider2.style.display = 'block';
+            } else {
+                sPayment.style.display = 'none';
+                sDivider2.style.display = 'none';
+            }
+        }
+
+        // Listen for radio changes to update summary
+        document.querySelectorAll('input[name="pickup"]').forEach(r => {
+            r.addEventListener('change', updateSummary);
+        });
+
+        // Validation
+        function validate() {
+            const errors = [];
+            if (getTotal() === 0) errors.push('Please select at least one item.');
+            if (!document.getElementById('name').value.trim()) errors.push('Please enter your name.');
+            if (!document.getElementById('email').value.trim()) errors.push('Please enter your email.');
+            if (!document.getElementById('phone').value.trim()) errors.push('Please enter your phone number.');
+            if (!document.querySelector('input[name="pickup"]:checked')) errors.push('Please select a pickup window.');
+            if (!document.querySelector('input[name="payment"]:checked')) errors.push('Please select a payment method.');
+            return errors;
+        }
+
+        // Submit
+        async function submitOrder() {
+            const errors = validate();
+            const errorEl = document.getElementById('submit-error');
+            const submitBtn = document.getElementById('submit-btn');
+
+            if (errors.length > 0) {
+                errorEl.textContent = errors[0];
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            errorEl.style.display = 'none';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'placing order...';
+
+            const pickup = document.querySelector('input[name="pickup"]:checked').value;
+            const payment = document.querySelector('input[name="payment"]:checked').value;
+
+            const orderData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                qty8oz: qty8oz,
+                qty4oz: qty4oz,
+                total: '$' + getTotal(),
+                pickupWindow: pickup,
+                paymentMethod: payment,
+                notes: document.getElementById('notes').value.trim()
+            };
+
+            // Update confirmation with specifics
+            if (payment === 'Venmo') {
+                document.getElementById('confirm-payment-step').textContent = 'Send $' + getTotal() + ' via Venmo to @oats123';
+            } else if (payment === 'Zelle') {
+                document.getElementById('confirm-payment-step').textContent = 'Send $' + getTotal() + ' via Zelle (details in confirmation email)';
+            } else {
+                document.getElementById('confirm-payment-step').textContent = 'Bring $' + getTotal() + ' cash to pickup';
+            }
+            document.getElementById('confirm-pickup-step').textContent = 'Pick up Sunday ' + pickup + ' at 3639 Market St';
+
+            if (APPS_SCRIPT_URL) {
+                try {
+                    await fetch(APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(orderData)
+                    });
+                } catch (err) {
+                    // no-cors won't give us a readable response, so we proceed anyway
+                    console.log('Order submitted (no-cors mode):', err);
+                }
+            } else {
+                console.log('No APPS_SCRIPT_URL configured. Order data:', orderData);
+            }
+
+            // Show confirmation
+            document.getElementById('order-form').style.display = 'none';
+            document.getElementById('confirmation').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
