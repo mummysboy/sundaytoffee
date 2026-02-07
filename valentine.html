@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order - Sunday Toffee</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Libre+Baskerville:wght@400&display=swap" rel="stylesheet">
+    <title>Valentine's Day - Sunday Toffee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --warm-brown: #8B7355;
-            --soft-cream: #FAF7F2;
-            --toast: #D4A574;
+            --rose: #C4847A;
+            --rose-dark: #B07369;
+            --rose-deep: #9A5F56;
+            --blush: #FDF5F3;
+            --blush-dark: #FAEAE6;
+            --cream: #FFF9F7;
             --dark-text: #4A4A4A;
             --light-text: #7A7A7A;
-            --butter: #F5E6D3;
+            --warm-brown: #8B7355;
         }
         body {
             font-family: 'Inter', sans-serif;
             color: var(--dark-text);
-            background-color: var(--soft-cream);
+            background-color: var(--cream);
             line-height: 1.7;
             font-weight: 300;
         }
@@ -35,7 +38,7 @@
         .logo {
             font-family: 'Libre Baskerville', serif;
             font-size: 1.3rem;
-            color: var(--warm-brown);
+            color: var(--rose);
             text-decoration: none;
             font-weight: 400;
         }
@@ -51,7 +54,7 @@
             transition: color 0.2s ease;
         }
         .nav-links a:hover {
-            color: var(--warm-brown);
+            color: var(--rose);
         }
 
         /* Page layout */
@@ -66,27 +69,60 @@
             text-align: center;
             margin-bottom: 3rem;
         }
+        .order-hero .hearts {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5rem;
+        }
         .order-hero h1 {
             font-family: 'Libre Baskerville', serif;
             font-size: 2.2rem;
             font-weight: 400;
-            color: var(--warm-brown);
-            margin-bottom: 1rem;
+            color: var(--rose);
+            margin-bottom: 0.5rem;
             line-height: 1.3;
+        }
+        .order-hero .subtitle {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.1rem;
+            color: var(--rose-dark);
+            margin-bottom: 1.2rem;
+            font-weight: 400;
         }
         .order-hero p {
             color: var(--light-text);
             font-size: 0.95rem;
             margin-bottom: 0.5rem;
         }
-        .allergy-notice {
+        .deadline-notice {
             display: inline-block;
-            background: var(--butter);
+            background: var(--blush-dark);
             padding: 0.6rem 1.2rem;
             border-radius: 6px;
-            font-size: 0.8rem;
-            color: var(--warm-brown);
+            font-size: 0.85rem;
+            color: var(--rose-deep);
             margin-top: 1rem;
+            font-weight: 400;
+        }
+        .allergy-notice {
+            display: inline-block;
+            background: var(--blush);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            color: var(--light-text);
+            margin-top: 0.6rem;
+        }
+
+        /* Vday image */
+        .vday-image {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .vday-image img {
+            max-width: 100%;
+            width: 400px;
+            border-radius: 10px;
         }
 
         /* Section headings */
@@ -97,18 +133,13 @@
             font-family: 'Libre Baskerville', serif;
             font-size: 1.3rem;
             font-weight: 400;
-            color: var(--warm-brown);
+            color: var(--rose);
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
-            border-bottom: 1px solid #E8E4DF;
+            border-bottom: 1px solid var(--blush-dark);
         }
 
-        /* Product cards */
-        .product-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
+        /* Product card */
         .product-card {
             display: flex;
             justify-content: space-between;
@@ -116,11 +147,11 @@
             background: white;
             padding: 1.2rem 1.5rem;
             border-radius: 8px;
-            border: 1px solid #E8E4DF;
+            border: 1px solid var(--blush-dark);
             transition: border-color 0.2s ease;
         }
         .product-card:hover {
-            border-color: var(--toast);
+            border-color: var(--rose);
         }
         .product-info h3 {
             font-family: 'Libre Baskerville', serif;
@@ -130,7 +161,7 @@
             margin-bottom: 0.2rem;
         }
         .product-info .price {
-            color: var(--warm-brown);
+            color: var(--rose);
             font-size: 0.9rem;
             font-weight: 400;
         }
@@ -143,9 +174,9 @@
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            border: 1px solid #E8E4DF;
-            background: var(--soft-cream);
-            color: var(--warm-brown);
+            border: 1px solid var(--blush-dark);
+            background: var(--cream);
+            color: var(--rose);
             font-size: 1.1rem;
             cursor: pointer;
             display: flex;
@@ -155,8 +186,8 @@
             line-height: 1;
         }
         .qty-btn:hover {
-            background: var(--butter);
-            border-color: var(--toast);
+            background: var(--blush-dark);
+            border-color: var(--rose);
         }
         .qty-value {
             font-size: 1rem;
@@ -173,7 +204,7 @@
             align-items: center;
             margin-top: 1.2rem;
             padding: 1rem 1.5rem;
-            background: var(--butter);
+            background: var(--blush-dark);
             border-radius: 8px;
         }
         .order-total span:first-child {
@@ -183,7 +214,7 @@
         .order-total .total-amount {
             font-family: 'Libre Baskerville', serif;
             font-size: 1.2rem;
-            color: var(--warm-brown);
+            color: var(--rose);
         }
 
         /* Form fields */
@@ -203,7 +234,7 @@
         .form-row textarea {
             width: 100%;
             padding: 0.75rem 1rem;
-            border: 1px solid #E8E4DF;
+            border: 1px solid var(--blush-dark);
             border-radius: 6px;
             font-family: 'Inter', sans-serif;
             font-size: 0.9rem;
@@ -215,7 +246,7 @@
         .form-row input:focus,
         .form-row textarea:focus {
             outline: none;
-            border-color: var(--toast);
+            border-color: var(--rose);
         }
         .form-row textarea {
             resize: vertical;
@@ -225,14 +256,14 @@
         /* Pickup info */
         .pickup-info {
             background: white;
-            border: 1px solid #E8E4DF;
+            border: 1px solid var(--blush-dark);
             border-radius: 8px;
             padding: 1.2rem 1.5rem;
             margin-bottom: 1.2rem;
         }
         .pickup-info .schedule {
             font-size: 0.9rem;
-            color: var(--warm-brown);
+            color: var(--rose);
             font-weight: 400;
             margin-bottom: 0.5rem;
         }
@@ -248,8 +279,8 @@
         }
         .delivery-note {
             font-size: 0.8rem;
-            color: var(--warm-brown);
-            background: var(--butter);
+            color: var(--rose-deep);
+            background: var(--blush-dark);
             padding: 0.6rem 1rem;
             border-radius: 6px;
             margin-top: 1rem;
@@ -272,16 +303,16 @@
             -webkit-appearance: none;
             width: 18px;
             height: 18px;
-            border: 2px solid #E8E4DF;
+            border: 2px solid var(--blush-dark);
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.2s ease;
             flex-shrink: 0;
         }
         .radio-option input[type="radio"]:checked {
-            border-color: var(--warm-brown);
-            background: var(--warm-brown);
-            box-shadow: inset 0 0 0 3px var(--soft-cream);
+            border-color: var(--rose);
+            background: var(--rose);
+            box-shadow: inset 0 0 0 3px var(--cream);
         }
         .radio-option span {
             font-size: 0.9rem;
@@ -293,15 +324,15 @@
             margin-left: 0.3rem;
         }
 
-        /* Payment details (Venmo/Zelle info) */
+        /* Payment details */
         .payment-detail {
             display: none;
-            background: var(--butter);
+            background: var(--blush-dark);
             padding: 0.8rem 1.2rem;
             border-radius: 6px;
             margin-top: 0.8rem;
             font-size: 0.85rem;
-            color: var(--warm-brown);
+            color: var(--rose-deep);
         }
         .payment-detail.visible {
             display: block;
@@ -313,7 +344,7 @@
         /* Summary card */
         .summary-card {
             background: white;
-            border: 1px solid #E8E4DF;
+            border: 1px solid var(--blush-dark);
             border-radius: 8px;
             padding: 1.5rem;
         }
@@ -332,7 +363,7 @@
         }
         .summary-divider {
             border: none;
-            border-top: 1px solid #E8E4DF;
+            border-top: 1px solid var(--blush-dark);
             margin: 0.8rem 0;
         }
         .summary-total {
@@ -347,7 +378,7 @@
         }
         .summary-total .value {
             font-family: 'Libre Baskerville', serif;
-            color: var(--warm-brown);
+            color: var(--rose);
             font-size: 1.1rem;
         }
 
@@ -363,15 +394,15 @@
             cursor: pointer;
             border: none;
         }
-        .btn-primary {
-            background-color: var(--warm-brown);
+        .btn-valentine {
+            background-color: var(--rose);
             color: white;
         }
-        .btn-primary:hover {
-            background-color: #7A6548;
+        .btn-valentine:hover {
+            background-color: var(--rose-dark);
         }
-        .btn-primary:disabled {
-            background-color: #C4B9A8;
+        .btn-valentine:disabled {
+            background-color: #D4B5B0;
             cursor: not-allowed;
         }
         .submit-area {
@@ -385,7 +416,7 @@
             font-size: 0.95rem;
         }
         .submit-error {
-            color: #C4847A;
+            color: var(--rose-deep);
             font-size: 0.85rem;
             margin-top: 0.8rem;
             display: none;
@@ -402,11 +433,15 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .confirmation .hearts {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
         .confirmation h1 {
             font-family: 'Libre Baskerville', serif;
             font-size: 2rem;
             font-weight: 400;
-            color: var(--warm-brown);
+            color: var(--rose);
             margin-bottom: 1rem;
         }
         .confirmation p {
@@ -419,7 +454,7 @@
         }
         .confirmation .next-steps {
             background: white;
-            border: 1px solid #E8E4DF;
+            border: 1px solid var(--blush-dark);
             border-radius: 8px;
             padding: 1.5rem;
             margin-top: 2rem;
@@ -432,7 +467,7 @@
             font-family: 'Libre Baskerville', serif;
             font-size: 1rem;
             font-weight: 400;
-            color: var(--warm-brown);
+            color: var(--rose);
             margin-bottom: 0.8rem;
         }
         .confirmation .next-steps li {
@@ -444,7 +479,7 @@
         .confirmation .back-link {
             display: inline-block;
             margin-top: 2rem;
-            color: var(--warm-brown);
+            color: var(--rose);
             text-decoration: none;
             font-size: 0.9rem;
             transition: opacity 0.2s ease;
@@ -468,7 +503,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            color: var(--warm-brown);
+            color: var(--rose);
             text-decoration: none;
             margin-top: 1rem;
             font-size: 0.9rem;
@@ -476,6 +511,10 @@
         }
         .instagram-link:hover {
             opacity: 0.7;
+        }
+        .instagram-link svg {
+            width: 18px;
+            height: 18px;
         }
 
         /* Fade-in animation */
@@ -508,7 +547,7 @@
         <ul class="nav-links">
             <li><a href="index.html#products">what i make</a></li>
             <li><a href="index.html#about">about</a></li>
-            <li><a href="#" class="active">order</a></li>
+            <li><a href="order.html">order</a></li>
         </ul>
     </nav>
 
@@ -519,36 +558,32 @@
 
             <!-- Hero -->
             <div class="order-hero fade-in">
-                <h1>place your order</h1>
-                <p>Buttery, crunchy toffee filled with almonds, covered in rich chocolate, and topped with more toasted nuts. Made in small batches with love right here in SF.</p>
+                <div class="hearts">&#10084;&#65039;</div>
+                <h1>valentine's day 2026</h1>
+                <p class="subtitle">sunday toffee</p>
+                <p>Buttery, crunchy toffee filled with almonds, covered in rich chocolate, and topped with more toasted nuts. Made in small batches with love right here in SF. Ready to give, no wrapping needed.</p>
+                <div class="deadline-notice">Orders close February 10th or when batches are full!</div>
+                <br>
                 <div class="allergy-notice">Contains nuts and dairy. Made in a home kitchen.</div>
+            </div>
+
+            <!-- Vday image -->
+            <div class="vday-image fade-in">
+                <img src="images/vday-1.png" alt="Valentine's Day toffee boxes in pink, red, and white with heart windows">
             </div>
 
             <!-- Product Selection -->
             <div class="form-section fade-in">
-                <h2>choose your toffee</h2>
-                <div class="product-cards">
-                    <div class="product-card">
-                        <div class="product-info">
-                            <h3>8 oz box</h3>
-                            <span class="price">$10</span>
-                        </div>
-                        <div class="qty-control">
-                            <button class="qty-btn" onclick="updateQty('8oz', -1)" aria-label="Decrease 8oz quantity">−</button>
-                            <span class="qty-value" id="qty-8oz">0</span>
-                            <button class="qty-btn" onclick="updateQty('8oz', 1)" aria-label="Increase 8oz quantity">+</button>
-                        </div>
+                <h2>choose your boxes</h2>
+                <div class="product-card">
+                    <div class="product-info">
+                        <h3>8 oz box</h3>
+                        <span class="price">$10</span>
                     </div>
-                    <div class="product-card">
-                        <div class="product-info">
-                            <h3>4 oz box</h3>
-                            <span class="price">$5</span>
-                        </div>
-                        <div class="qty-control">
-                            <button class="qty-btn" onclick="updateQty('4oz', -1)" aria-label="Decrease 4oz quantity">−</button>
-                            <span class="qty-value" id="qty-4oz">0</span>
-                            <button class="qty-btn" onclick="updateQty('4oz', 1)" aria-label="Increase 4oz quantity">+</button>
-                        </div>
+                    <div class="qty-control">
+                        <button class="qty-btn" onclick="updateQty(-1)" aria-label="Decrease quantity">&minus;</button>
+                        <span class="qty-value" id="qty-display">0</span>
+                        <button class="qty-btn" onclick="updateQty(1)" aria-label="Increase quantity">+</button>
                     </div>
                 </div>
                 <div class="order-total">
@@ -578,7 +613,7 @@
             <div class="form-section fade-in">
                 <h2>pickup details</h2>
                 <div class="pickup-info">
-                    <div class="schedule">Order by Friday for Sunday pickup</div>
+                    <div class="schedule">Valentine's Day pickup - February 14th</div>
                     <div class="address">3639 Market St, San Francisco, CA 94131</div>
                     <div class="address-note">Ring the first door bell when you get here!</div>
                 </div>
@@ -615,10 +650,10 @@
                     </label>
                 </div>
                 <div class="payment-detail" id="venmo-detail">
-                    <strong>Venmo:</strong> @oats123 (last four: 7476)
+                    <strong>Venmo:</strong> @oats123 (last four: 7476) &mdash; please send before pickup to confirm your order
                 </div>
                 <div class="payment-detail" id="zelle-detail">
-                    Zelle is also accepted — details provided at pickup or via email.
+                    Zelle is also accepted &mdash; details provided at pickup or via email.
                 </div>
             </div>
 
@@ -626,7 +661,7 @@
             <div class="form-section fade-in">
                 <h2>anything else?</h2>
                 <div class="form-row">
-                    <textarea id="notes" placeholder="Special requests, questions, etc. (optional)"></textarea>
+                    <textarea id="notes" placeholder="Special requests, who it's for, etc. (optional)"></textarea>
                 </div>
             </div>
 
@@ -634,16 +669,12 @@
             <div class="form-section fade-in">
                 <h2>order summary</h2>
                 <div class="summary-card">
-                    <div class="summary-row" id="summary-8oz" style="display: none;">
+                    <div class="summary-row" id="summary-boxes" style="display: none;">
                         <span class="label">8 oz box</span>
-                        <span class="value" id="summary-8oz-value"></span>
-                    </div>
-                    <div class="summary-row" id="summary-4oz" style="display: none;">
-                        <span class="label">4 oz box</span>
-                        <span class="value" id="summary-4oz-value"></span>
+                        <span class="value" id="summary-boxes-value"></span>
                     </div>
                     <div class="summary-row" id="summary-empty">
-                        <span class="label">No items selected yet</span>
+                        <span class="label">No boxes selected yet</span>
                         <span class="value"></span>
                     </div>
                     <hr class="summary-divider">
@@ -665,8 +696,8 @@
 
             <!-- Submit -->
             <div class="submit-area fade-in">
-                <button class="btn btn-primary submit-btn" id="submit-btn" onclick="submitOrder()">
-                    place order
+                <button class="btn btn-valentine submit-btn" id="submit-btn" onclick="submitOrder()">
+                    place valentine's order
                 </button>
                 <p class="submit-error" id="submit-error"></p>
             </div>
@@ -675,17 +706,19 @@
 
         <!-- CONFIRMATION -->
         <div class="confirmation" id="confirmation">
+            <div class="hearts">&#10084;&#65039;</div>
             <h1>thank you!</h1>
-            <p>Your order has been placed. You'll hear from me soon to confirm the details.</p>
+            <p>Your Valentine's Day order has been placed. Someone special is going to love this.</p>
             <p>Keep an eye on your email for a confirmation.</p>
             <div class="next-steps">
                 <h3>what's next</h3>
                 <ul>
                     <li>I'll confirm your order by email</li>
                     <li id="confirm-payment-step">Send payment via Venmo to @oats123</li>
-                    <li id="confirm-pickup-step">Pick up on Sunday</li>
+                    <li id="confirm-pickup-step">Pick up on Valentine's Day, February 14th</li>
                 </ul>
             </div>
+            <p style="font-size: 0.8rem; margin-top: 1.5rem;">Questions? Email <a href="mailto:avenajiajia@gmail.com" style="color: var(--rose);">avenajiajia@gmail.com</a></p>
             <a href="index.html" class="back-link">&larr; back to sunday toffee</a>
         </div>
 
@@ -694,7 +727,10 @@
     <footer class="fade-in">
         <a href="index.html" class="logo">sunday toffee</a>
         <p>made with love, one batch at a time</p>
-        <a href="https://instagram.com/sunday_toffee" class="instagram-link">
+        <a href="https://instagram.com/sunday_toffee" class="instagram-link" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+            </svg>
             @sunday_toffee
         </a>
     </footer>
@@ -706,8 +742,7 @@
         const APPS_SCRIPT_URL = '';
 
         // State
-        let qty8oz = 0;
-        let qty4oz = 0;
+        let qty = 0;
 
         // Fade-in animation
         const fadeElements = document.querySelectorAll('.fade-in');
@@ -721,20 +756,15 @@
         fadeElements.forEach(el => observer.observe(el));
 
         // Quantity controls
-        function updateQty(size, delta) {
-            if (size === '8oz') {
-                qty8oz = Math.max(0, qty8oz + delta);
-                document.getElementById('qty-8oz').textContent = qty8oz;
-            } else {
-                qty4oz = Math.max(0, qty4oz + delta);
-                document.getElementById('qty-4oz').textContent = qty4oz;
-            }
+        function updateQty(delta) {
+            qty = Math.max(0, qty + delta);
+            document.getElementById('qty-display').textContent = qty;
             updateTotal();
             updateSummary();
         }
 
         function getTotal() {
-            return (qty8oz * 10) + (qty4oz * 5);
+            return qty * 10;
         }
 
         function updateTotal() {
@@ -761,32 +791,24 @@
 
         // Update live summary
         function updateSummary() {
-            const s8 = document.getElementById('summary-8oz');
-            const s4 = document.getElementById('summary-4oz');
+            const sBoxes = document.getElementById('summary-boxes');
             const sEmpty = document.getElementById('summary-empty');
 
-            if (qty8oz > 0) {
-                s8.style.display = 'flex';
-                document.getElementById('summary-8oz-value').textContent = qty8oz + ' x $10 = $' + (qty8oz * 10);
+            if (qty > 0) {
+                sBoxes.style.display = 'flex';
+                document.getElementById('summary-boxes-value').textContent = qty + ' x $10 = $' + (qty * 10);
+                sEmpty.style.display = 'none';
             } else {
-                s8.style.display = 'none';
+                sBoxes.style.display = 'none';
+                sEmpty.style.display = 'flex';
             }
-
-            if (qty4oz > 0) {
-                s4.style.display = 'flex';
-                document.getElementById('summary-4oz-value').textContent = qty4oz + ' x $5 = $' + (qty4oz * 5);
-            } else {
-                s4.style.display = 'none';
-            }
-
-            sEmpty.style.display = (qty8oz === 0 && qty4oz === 0) ? 'flex' : 'none';
 
             // Pickup
             const pickup = document.querySelector('input[name="pickup"]:checked');
             const sPickup = document.getElementById('summary-pickup');
             if (pickup) {
                 sPickup.style.display = 'flex';
-                document.getElementById('summary-pickup-value').textContent = 'Sunday, ' + pickup.value;
+                document.getElementById('summary-pickup-value').textContent = 'Feb 14, ' + pickup.value;
             } else {
                 sPickup.style.display = 'none';
             }
@@ -813,7 +835,7 @@
         // Validation
         function validate() {
             const errors = [];
-            if (getTotal() === 0) errors.push('Please select at least one item.');
+            if (getTotal() === 0) errors.push('Please select at least one box.');
             if (!document.getElementById('name').value.trim()) errors.push('Please enter your name.');
             if (!document.getElementById('email').value.trim()) errors.push('Please enter your email.');
             if (!document.getElementById('phone').value.trim()) errors.push('Please enter your phone number.');
@@ -845,12 +867,12 @@
                 name: document.getElementById('name').value.trim(),
                 email: document.getElementById('email').value.trim(),
                 phone: document.getElementById('phone').value.trim(),
-                qty8oz: qty8oz,
-                qty4oz: qty4oz,
+                qty8oz: qty,
+                qty4oz: 0,
                 total: '$' + getTotal(),
-                pickupWindow: pickup,
+                pickupWindow: 'Valentine\'s Day ' + pickup,
                 paymentMethod: payment,
-                notes: document.getElementById('notes').value.trim()
+                notes: '[VALENTINE\'S ORDER] ' + document.getElementById('notes').value.trim()
             };
 
             // Update confirmation with specifics
@@ -861,7 +883,7 @@
             } else {
                 document.getElementById('confirm-payment-step').textContent = 'Bring $' + getTotal() + ' cash to pickup';
             }
-            document.getElementById('confirm-pickup-step').textContent = 'Pick up Sunday ' + pickup + ' at 3639 Market St';
+            document.getElementById('confirm-pickup-step').textContent = 'Pick up Feb 14th, ' + pickup + ' at 3639 Market St';
 
             if (APPS_SCRIPT_URL) {
                 try {
@@ -872,7 +894,6 @@
                         body: JSON.stringify(orderData)
                     });
                 } catch (err) {
-                    // no-cors won't give us a readable response, so we proceed anyway
                     console.log('Order submitted (no-cors mode):', err);
                 }
             } else {

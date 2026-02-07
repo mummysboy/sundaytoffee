@@ -238,13 +238,16 @@
         }
         .fade-in {
             opacity: 0;
-            transform: translateY(15px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
+        .fade-in.delay-1 { transition-delay: 0.15s; }
+        .fade-in.delay-2 { transition-delay: 0.3s; }
+        .fade-in.delay-3 { transition-delay: 0.45s; }
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             .nav-links { gap: 1.2rem; }
@@ -256,7 +259,7 @@
     </style>
 </head>
 <body>
-    <nav>
+    <nav class="fade-in">
         <a href="#" class="logo">sunday toffee</a>
         <ul class="nav-links">
             <li><a href="#products">what i make</a></li>
@@ -266,7 +269,7 @@
     </nav>
 
     <section class="hero">
-        <div class="hero-content fade-in visible">
+        <div class="hero-content fade-in">
             <img src="images/sketch.png" alt="Hand-drawn illustration of toffee boxes" class="hero-sketch">
             <h1>Small batch toffee, made by hand.</h1>
             <p>Just butter, sugar, and a little bit of love. Nothing fancy, just really good toffee.</p>
@@ -276,25 +279,25 @@
     </section>
 
     <section id="products">
-        <h2 class="section-title fade-in visible">what i make</h2>
-        <p class="section-subtitle fade-in visible">Simple recipes, quality ingredients.</p>
+        <h2 class="section-title fade-in">what i make</h2>
+        <p class="section-subtitle fade-in delay-1">Simple recipes, quality ingredients.</p>
 
-        <div class="product-photo fade-in visible">
+        <div class="product-photo fade-in delay-2">
             <img src="images/brown-box.png" alt="Sunday Toffee - open box showing chocolate almond toffee pieces">
         </div>
     </section>
 
-    <div class="valentines fade-in visible">
+    <div class="valentines fade-in">
         <h2 class="section-title">valentine's day</h2>
         <p>Pre-orders are open for Valentine's Day. Get something sweet for someone sweet.</p>
         <img src="images/vday-1.png" alt="Valentine's Day toffee boxes in pink, red, and white with heart windows">
         <br>
-        <a href="https://forms.gle/CH11WPxwTuJB5h579" class="btn btn-valentine" target="_blank">pre-order for valentine's</a>
+        <a href="valentine.html" class="btn btn-valentine">pre-order for valentine's</a>
     </div>
 
     <section id="about" class="about">
-        <h2 class="section-title fade-in visible">the story</h2>
-        <div class="about-content fade-in visible">
+        <h2 class="section-title fade-in">the story</h2>
+        <div class="about-content fade-in delay-1">
             <div class="about-story">
                 <p>Sunday Toffee started the way most good things do — making treats for family and friends during the holidays. After years of people saying "you should sell this," I finally gave it a shot.</p>
                 <p>It's called Sunday Toffee because that's when you can get it. I make everything myself, one batch at a time, on weekends. It's a one-person operation, about as local as it gets.</p>
@@ -310,12 +313,12 @@
     </section>
 
     <section id="order" class="order">
-        <h2 class="section-title fade-in visible">want some?</h2>
-        <p class="fade-in visible">I make toffee in small batches, so grab some while it's fresh.</p>
-        <a href="order.html" class="btn btn-primary fade-in visible">place an order</a>
+        <h2 class="section-title fade-in">want some?</h2>
+        <p class="fade-in delay-1">I make toffee in small batches, so grab some while it's fresh.</p>
+        <a href="order.html" class="btn btn-primary fade-in delay-2">place an order</a>
     </section>
 
-    <footer>
+    <footer class="fade-in">
         <a href="#" class="logo">sunday toffee</a>
         <p>made with love, one batch at a time</p>
         <a href="https://instagram.com/sunday_toffee" class="instagram-link" target="_blank">
